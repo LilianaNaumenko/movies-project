@@ -1,3 +1,5 @@
+import { NormalizerFn } from '@testing-library/react'
+
 export type TrendingResponse = {
     total_pages: number
     total_results: number
@@ -117,4 +119,25 @@ export type CastResponse = {
         department: string
         job: string
     }[]
+}
+
+export type ReviewsResponse = {
+    id: number
+    page: number
+    results: {
+        author: string
+        author_details: {
+            name: string
+            username: string
+            avatar_path: string
+            rating: boolean
+        }
+        content: string
+        created_at: string
+        id: string
+        updated_at: string
+        url: string
+    }[]
+    total_pages: number
+    total_results: number
 }

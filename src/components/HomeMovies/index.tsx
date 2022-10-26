@@ -26,7 +26,7 @@ function HomeMovies() {
     }, [])
 
     return (
-        <>
+        <div className="home-movies__main-contaiter">
             <h1>Traiding today</h1>
             <div>
                 <ul>
@@ -37,12 +37,16 @@ function HomeMovies() {
                                     movie.original_title ||
                                     movie.original_name}
                             </h1>
-                            <img src={`${IMAGE_URL}${movie.poster_path}`} />
+                            <img
+                                width="300"
+                                height="450"
+                                src={`${IMAGE_URL}${movie.poster_path}`}
+                            />
                         </NavLink>
                     ))}
                 </ul>
             </div>
-        </>
+        </div>
     )
 }
 

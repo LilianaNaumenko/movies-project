@@ -1,0 +1,27 @@
+.app {
+    &__main-contaiter {
+        background-color: #190b36;
+    }
+
+    &__link-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__link {
+        text-decoration: none;
+
+        margin-top: 35px;
+
+        font-size: 18px;
+        color: #6a617d;
+    }
+
+    &__link:not(:last-child) {
+        margin-right: 40px;
+    }
+
+    &__link:hover {
+        color: #705f96;
+    }
+}

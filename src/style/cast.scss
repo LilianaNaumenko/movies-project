@@ -1,0 +1,44 @@
+.cast {
+    &__list-container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+    }
+
+    &__list-item {
+        margin-bottom: 40px;
+
+        text-decoration: none;
+        color: $main-white-color;
+        list-style: none;
+
+        &:not(:nth-child(4n)) {
+            margin-right: 52px;
+        }
+    }
+
+    &__list-item-text {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    &__character-text-container {
+        display: flex;
+        width: 300px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__character-text {
+        margin-right: 5px;
+
+        color: #9d83d6;
+    }
+
+    &__secondary-text {
+        font-size: 20px;
+        color: $main-white-color;
+        text-align: center;
+    }
+}

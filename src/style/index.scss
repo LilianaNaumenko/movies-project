@@ -1,2 +1,14 @@
+$main-white-color: white;
+
 @import './home-movies.scss';
 @import './app.scss';
+@import './find-movie.scss';
+@import './movie-information.scss';
+@import './cast.scss';
+@import './reviews.scss';
+@import './image-placeholder.scss';
+
+body {
+    height: 100vh;
+    border-color: #190b36;
+}

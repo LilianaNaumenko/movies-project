@@ -1,15 +1,35 @@
-.home-movies {
+.find-movie {
     &__main-contaiter {
         background-color: #190b36;
     }
 
-    &__main-header-container {
+    &__form-container {
         display: flex;
         justify-content: center;
+
+        margin-top: 35px;
     }
 
-    &__main-header {
+    &__label {
+        font-size: 20px;
+
         color: #9d83d6;
+    }
+
+    &__input {
+        width: 400px;
+        margin-left: 15px;
+
+        font-size: 20px;
+
+        background-color: #190b36;
+        color: $main-white-color;
+        border: 1px solid #6a617d;
+        border-radius: 3px;
+
+        &:focus-visible {
+            outline: none;
+        }
     }
 
     &__list-container {
@@ -18,6 +38,7 @@
 
         margin-right: 40px;
         margin-left: 40px;
+        margin-top: 30px;
         padding: 0;
 
         list-style: none;
@@ -31,7 +52,7 @@
             transform: scale(1.1);
         }
 
-        &:hover .home-movies__backdrop {
+        &:hover .find-movie__backdrop {
             opacity: 1;
             background-color: rgba(0, 0, 0, 0.6);
         }
@@ -44,6 +65,19 @@
     &__list-item-link {
         text-decoration: none;
         color: $main-white-color;
+    }
+
+    &__list-item-text {
+        width: 300px;
+        font-size: 14px;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:hover {
+            color: #6a617d;
+        }
     }
 
     &__img-or-backdrop-container {
@@ -72,16 +106,8 @@
         margin-right: 7px;
     }
 
-    &__list-item-text {
-        font-size: 14px;
-        text-align: center;
-
-        &:hover {
-            color: #6a617d;
-        }
-    }
-
     &__error-message {
-        color: #db0b19;
+        color: #f70515;
+        text-align: center;
     }
 }

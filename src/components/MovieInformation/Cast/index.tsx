@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { CastResponse } from '../../../models'
 import { API_KEY, API_URL, IMAGE_URL } from '../../../variables'
 import fallbackPhoto from '../../../image/photo-profile.jpeg'
+import Image from '../../Image/Image'
 
 function Cast() {
     const { id } = useParams<{ id: string }>()
@@ -26,9 +27,9 @@ function Cast() {
 
     return (
         <div>
-            {actors && (
+            {actors.length ? (
                 <div>
-                    <ul>
+                    <ul className="cast__list-container">
                         {actors.map(
                             ({
                                 id,
@@ -37,23 +38,33 @@ function Cast() {
                                 profile_path,
                                 character,
                             }) => (
-                                <li key={id}>
-                                    <h3>{name || original_name}</h3>
-                                    <img
-                                        width="300"
-                                        height="450"
-                                        src={
-                                            profile_path
-                                                ? `${IMAGE_URL}${profile_path}`
-                                                : fallbackPhoto
-                                        }
+                                <li className="cast__list-item" key={id}>
+                                    <h3 className="cast__list-item-text">
+                                        {name || original_name}
+                                    </h3>
+                                    <Image
+                                        width={300}
+                                        height={450}
+                                        src={profile_path}
                                     />
-                                    <p>Character:{character}</p>
+
+                                    <div className="cast__character-text-container">
+                                        <p className="cast__character-text">
+                                            Character:
+                                        </p>
+                                        <p> {character ? character : '-'}</p>
+                                    </div>
                                 </li>
                             )
                         )}
                     </ul>
                 </div>
+            ) : (
+                <>
+                    <p className="cast__secondary-text">
+                        No information about the cast.
+                    </p>
+                </>
             )}
         </div>
     )

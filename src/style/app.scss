@@ -1,5 +1,6 @@
 .app {
     &__main-contaiter {
+        min-height: 100vh;
         background-color: #190b36;
     }
 
@@ -15,13 +16,13 @@
 
         font-size: 18px;
         color: #6a617d;
-    }
 
-    &__link:not(:last-child) {
-        margin-right: 40px;
-    }
+        &:not(:last-child) {
+            margin-right: 40px;
+        }
 
-    &__link:hover {
-        color: #705f96;
+        &:hover {
+            color: #705f96;
+        }
     }
 }

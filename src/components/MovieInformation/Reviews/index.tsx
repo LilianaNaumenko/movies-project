@@ -23,25 +23,31 @@ function Reviews() {
         getReviewsAboutMovie()
     }, [])
 
-    return review ? (
-        <div>
-            <ul>
+    return review.length ? (
+        <div className="reviews__main-container">
+            <ul className="reviews__list-container">
                 {review.map(({ id, author_details, content }) => (
-                    <li key={id}>
-                        <p>
-                            Author:{' '}
-                            {author_details.name
-                                ? author_details.name
-                                : 'No name'}
-                        </p>
-                        <p>{content}</p>
+                    <li className="reviews__list-item" key={id}>
+                        <div className="reviews__text-author-container">
+                            <p className="reviews__text-author-list-item">
+                                Author:
+                            </p>
+                            <p className="reviews__text-author-list-item">
+                                {author_details.name
+                                    ? author_details.name
+                                    : 'No name'}
+                            </p>
+                        </div>
+                        <p className="reviews__text-content">{content}</p>
                     </li>
                 ))}
             </ul>
         </div>
     ) : (
         <>
-            <p>There are no reviews for this film. Yours may be the first.</p>
+            <p className="reviews__secondary-text">
+                There are no reviews for this film. Yours may be the first.
+            </p>
         </>
     )
 }

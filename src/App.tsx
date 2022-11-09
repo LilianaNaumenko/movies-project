@@ -7,10 +7,18 @@ function App() {
         <div className="app__main-contaiter">
             <Router>
                 <div className="app__link-container">
-                    <NavLink className="app__link" to="/">
+                    <NavLink
+                        className="app__link"
+                        to="/home"
+                        activeClassName="app__nav-link-active"
+                    >
                         Trending Today
                     </NavLink>
-                    <NavLink className="app__link" to="/movies">
+                    <NavLink
+                        className="app__link"
+                        to="/movies"
+                        activeClassName="app__nav-link-active"
+                    >
                         Find Movies
                     </NavLink>
                 </div>

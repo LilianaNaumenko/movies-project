@@ -1,22 +1,22 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { NavLink, Route, useParams } from 'react-router-dom'
 import { MovieInformationResponse } from '../../models'
-import { API_KEY, API_URL } from '../../variables'
 import Cast from './Cast'
 import Reviews from './Reviews'
 import Image from '../Image/Image'
+import { ThreeDots } from 'react-loader-spinner'
+import { fetchInformationAboutMovie } from '../../requests/movie'
 
 function MovieInformation() {
     const { id } = useParams<{ id: string }>()
     const [infoMovie, updateInfoMovie] = useState<MovieInformationResponse>()
+    const [isLoading, updateIsLoading] = useState<boolean>(true)
 
     const getInformationAboutMovie = async () => {
         try {
-            const { data } = await axios.get<MovieInformationResponse>(
-                `${API_URL}movie/${id}?api_key=${API_KEY}&language=en-US`
-            )
+            const { data } = await fetchInformationAboutMovie(id)
             updateInfoMovie(data)
+            updateIsLoading(false)
         } catch (error) {
             console.error(error)
         }
@@ -26,7 +26,18 @@ function MovieInformation() {
         getInformationAboutMovie()
     }, [])
 
-    return (
+    return isLoading ? (
+        <div className="movie-information__main-loader-container">
+            <div className="movie-information__loader-container">
+                <ThreeDots
+                    height="100"
+                    width="100"
+                    color="White"
+                    ariaLabel="three-dots-loading"
+                />
+            </div>
+        </div>
+    ) : (
         <div className="movie-information__main-container">
             {infoMovie ? (
                 <>

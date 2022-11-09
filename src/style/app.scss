@@ -24,5 +24,13 @@
         &:hover {
             color: #705f96;
         }
+
+        &:focus {
+            color: $main-white-color;
+        }
+    }
+
+    &__nav-link-active {
+        color: $main-white-color;
     }
 }

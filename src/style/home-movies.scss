@@ -9,7 +9,7 @@
     }
 
     &__main-header {
-        color: #9d83d6;
+        color: $main-purple-color;
     }
 
     &__list-container {
@@ -64,7 +64,7 @@
     }
 
     &__backdrop-header {
-        color: #9d83d6;
+        color: $main-purple-color;
     }
 
     &__backdrop-text {
@@ -83,5 +83,16 @@
 
     &__error-message {
         color: #db0b19;
+    }
+
+    &__main-loader-container {
+        position: relative;
+    }
+
+    &__loader-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }

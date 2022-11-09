@@ -13,7 +13,7 @@
     &__label {
         font-size: 20px;
 
-        color: #9d83d6;
+        color: $main-purple-color;
     }
 
     &__input {
@@ -98,7 +98,7 @@
     }
 
     &__backdrop-header {
-        color: #9d83d6;
+        color: $main-purple-color;
     }
 
     &__backdrop-text {
@@ -109,5 +109,16 @@
     &__error-message {
         color: #f70515;
         text-align: center;
+    }
+
+    &__main-loader-container {
+        position: relative;
+    }
+
+    &__loader-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }

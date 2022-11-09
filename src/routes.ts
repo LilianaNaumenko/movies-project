@@ -3,7 +3,7 @@ import FindMovie from './components/FindMovie'
 import MovieInformation from './components/MovieInformation'
 
 const routes = [
-    { path: '/', exact: true, component: HomeMovies },
+    { path: '/home', exact: true, component: HomeMovies },
     { path: '/movies', exact: true, component: FindMovie },
     { path: '/movies/:id', component: MovieInformation },
 ]

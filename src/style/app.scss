@@ -6,7 +6,9 @@
 
     &__link-container {
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
+        align-items: baseline;
+        margin-right: 40px;
     }
 
     &__link {
@@ -32,5 +34,21 @@
 
     &__nav-link-active {
         color: $main-white-color;
+    }
+
+    &__select {
+        margin-left: 390px;
+        width: 120px;
+        height: 40px;
+        font-size: 15px;
+        color: $main-white-color;
+        border: none;
+        background-color: #190b36;
+        border-radius: 3px;
+        cursor: pointer;
+
+        &:focus-visible {
+            outline: none;
+        }
     }
 }

@@ -1,6 +1,7 @@
 import routes from './routes'
 import React from 'react'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+import Menu from './components/Menu/Menu'
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                     >
                         Find Movies
                     </NavLink>
+                    <Menu />
                 </div>
 
                 {routes.map(({ path, exact, component }) => (

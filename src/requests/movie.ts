@@ -9,8 +9,10 @@ import {
 import { API_URL, API_KEY } from '../variables'
 
 export const fetchAllTrendingMovies = async () => {
+    const language = 'en-US'
+
     return await axios.get<TrendingResponse>(
-        `${API_URL}trending/all/day?api_key=${API_KEY}`
+        `${API_URL}trending/all/day?api_key=${API_KEY}&language=${language}`
     )
 }
 

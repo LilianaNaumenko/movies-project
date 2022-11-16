@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { CastResponse } from '../../../models'
 import Image from '../../Image/Image'
 import { ThreeDots } from 'react-loader-spinner'
 import { fetchAllMovieActors } from '../../../requests/movie'
+import { LanguageContext } from '../../../App'
 
 function Cast() {
     const { id } = useParams<{ id: string }>()
     const [actors, updateActors] = useState<CastResponse['cast']>([])
     const [isLoading, updateIsLoading] = useState<boolean>(true)
+    const { language } = useContext(LanguageContext)
 
     const getInfoActors = async () => {
         try {
@@ -22,7 +24,7 @@ function Cast() {
 
     useEffect(() => {
         getInfoActors()
-    }, [])
+    }, [language])
 
     return isLoading ? (
         <div className="cast__loader-container">

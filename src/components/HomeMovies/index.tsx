@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState, useEffect } from 'react'
 import { TrendingResponse } from '../../models'
 import { NavLink } from 'react-router-dom'
 import Image from '../Image/Image'
 import { ThreeDots } from 'react-loader-spinner'
 import { fetchAllTrendingMovies } from '../../requests/movie'
-import Menu from '../Menu/Menu'
+import { LanguageContext } from '../../App'
 
 function HomeMovies() {
     const [moviesTrang, updateMoviesTrand] = useState<
         TrendingResponse['results']
     >([])
     const [isLoading, updateIsLoading] = useState<boolean>(true)
+    const { language } = useContext(LanguageContext)
 
     const getMoviesTrandToday = async () => {
         try {
@@ -25,7 +26,7 @@ function HomeMovies() {
 
     useEffect(() => {
         getMoviesTrandToday()
-    }, [])
+    }, [language])
 
     return (
         <>

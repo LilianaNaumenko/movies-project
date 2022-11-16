@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { NavLink, Route, useParams } from 'react-router-dom'
 import { MovieInformationResponse } from '../../models'
 import Cast from './Cast'
@@ -6,11 +6,13 @@ import Reviews from './Reviews'
 import Image from '../Image/Image'
 import { ThreeDots } from 'react-loader-spinner'
 import { fetchInformationAboutMovie } from '../../requests/movie'
+import { LanguageContext } from '../../App'
 
 function MovieInformation() {
     const { id } = useParams<{ id: string }>()
     const [infoMovie, updateInfoMovie] = useState<MovieInformationResponse>()
     const [isLoading, updateIsLoading] = useState<boolean>(true)
+    const { language } = useContext(LanguageContext)
 
     const getInformationAboutMovie = async () => {
         try {
@@ -24,7 +26,7 @@ function MovieInformation() {
 
     useEffect(() => {
         getInformationAboutMovie()
-    }, [])
+    }, [language])
 
     return isLoading ? (
         <div className="movie-information__main-loader-container">

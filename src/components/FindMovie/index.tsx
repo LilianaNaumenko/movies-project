@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FindMoviesResponse } from '../../models'
 import Image from '../Image/Image'
 import { ThreeDots } from 'react-loader-spinner'
 import { fetchMovieBySearch } from '../../requests/movie'
+import { LanguageContext } from '../../App'
 
 function FindMovie() {
     const [value, updateValue] = useState('')
     const [result, updateResults] = useState<FindMoviesResponse['results']>([])
     const [isLoading, updateIsLoading] = useState<boolean>(false)
+    const { language } = useContext(LanguageContext)
 
     const handleChange = (e: {
         target: { value: React.SetStateAction<string> }
@@ -31,7 +33,7 @@ function FindMovie() {
         {
             value && getResultsMovies()
         }
-    }, [value])
+    }, [value, language])
 
     return (
         <div className="find-movie__main-contaiter">

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ThreeDots } from 'react-loader-spinner'
 import { useParams } from 'react-router-dom'
+import { LanguageContext } from '../../../App'
 import { ReviewsResponse } from '../../../models'
 import { fetchAllReviewsAboutMovie } from '../../../requests/movie'
 
@@ -8,6 +9,7 @@ function Reviews() {
     const { id } = useParams<{ id: string }>()
     const [review, updateReview] = useState<ReviewsResponse['results']>([])
     const [isLoading, updateIsLoading] = useState<boolean>(true)
+    const { language } = useContext(LanguageContext)
 
     const getReviewsAboutMovie = async () => {
         try {
@@ -21,7 +23,7 @@ function Reviews() {
 
     useEffect(() => {
         getReviewsAboutMovie()
-    }, [])
+    }, [language])
 
     return isLoading ? (
         <div className="reviews__loader-container">

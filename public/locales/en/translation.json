@@ -1,0 +1,36 @@
+{
+    "trending": {
+        "title": "Trending today",
+        "overview": "Overview:",
+        "notOverview": "Overview missing."
+    },
+
+    "findMovie": {
+        "title": "Find Movies"
+    },
+
+    "movieInformation": {
+        "userScore": "User Score:",
+        "genres": "Genres:",
+        "notGenres": "Geners missing.",
+        "notInfoMovie": "There is no information available for this movie."
+    },
+
+    "cast": {
+        "character": " Character:",
+        "notInfoActor": "No information about the cast."
+    },
+
+    "reviews": {
+        "author": "Author:",
+        "notReviews": "There are no reviews for this film. Yours may be the first."
+    },
+
+    "navLink": {
+        "trendingtoday": "Trending Today",
+        "findMovies": " Find Movies",
+        "registration": "Registration",
+        "cast": "Cast",
+        "reviews": "Reviews"
+    }
+}

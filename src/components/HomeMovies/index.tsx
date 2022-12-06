@@ -6,6 +6,8 @@ import Image from '../Image/Image'
 import { ThreeDots } from 'react-loader-spinner'
 import { fetchAllTrendingMovies } from '../../requests/movie'
 import { LanguageContext } from '../../App'
+import { useTranslation } from 'react-i18next'
+import ListMovie from '../ListMovie'
 
 function HomeMovies() {
     const [moviesTrang, updateMoviesTrand] = useState<
@@ -13,6 +15,8 @@ function HomeMovies() {
     >([])
     const [isLoading, updateIsLoading] = useState<boolean>(true)
     const { language } = useContext(LanguageContext)
+
+    const { t } = useTranslation()
 
     const getMoviesTrandToday = async () => {
         try {
@@ -32,7 +36,9 @@ function HomeMovies() {
         <>
             <div className="home-movies__main-contaiter">
                 <div className="home-movies__main-header-container">
-                    <h1 className="home-movies__main-header">Trending today</h1>
+                    <h1 className="home-movies__main-header">
+                        {t('trending.title')}
+                    </h1>
                 </div>
                 {isLoading ? (
                     <div className="home-movies__main-loader-container">
@@ -47,54 +53,7 @@ function HomeMovies() {
                     </div>
                 ) : (
                     <div>
-                        <ul className="home-movies__list-container">
-                            {moviesTrang.map(
-                                ({
-                                    id,
-                                    title,
-                                    original_title,
-                                    original_name,
-                                    poster_path,
-                                    overview,
-                                }) => (
-                                    <li
-                                        className="home-movies__list-item"
-                                        key={id}
-                                    >
-                                        <NavLink
-                                            className="home-movies__list-item-link"
-                                            to={`/movies/${id}`}
-                                        >
-                                            <h2 className="home-movies__list-item-text">
-                                                {title ||
-                                                    original_title ||
-                                                    original_name}
-                                            </h2>
-                                            <div className="home-movies__img-or-backdrop-container">
-                                                <Image
-                                                    width={300}
-                                                    height={450}
-                                                    src={poster_path}
-                                                />
-
-                                                <div className="home-movies__backdrop">
-                                                    <h2 className="home-movies__backdrop-header">
-                                                        Overview:
-                                                    </h2>
-                                                    {overview ? (
-                                                        <p className="home-movies__backdrop-text">
-                                                            {overview}
-                                                        </p>
-                                                    ) : (
-                                                        <p>Overview missing.</p>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </NavLink>
-                                    </li>
-                                )
-                            )}
-                        </ul>
+                        <ListMovie arrMovies={moviesTrang} />
                     </div>
                 )}
             </div>

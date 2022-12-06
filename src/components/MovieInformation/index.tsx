@@ -7,12 +7,15 @@ import Image from '../Image/Image'
 import { ThreeDots } from 'react-loader-spinner'
 import { fetchInformationAboutMovie } from '../../requests/movie'
 import { LanguageContext } from '../../App'
+import { useTranslation } from 'react-i18next'
 
 function MovieInformation() {
     const { id } = useParams<{ id: string }>()
     const [infoMovie, updateInfoMovie] = useState<MovieInformationResponse>()
     const [isLoading, updateIsLoading] = useState<boolean>(true)
     const { language } = useContext(LanguageContext)
+
+    const { t } = useTranslation()
 
     const getInformationAboutMovie = async () => {
         try {
@@ -55,7 +58,7 @@ function MovieInformation() {
                             />
                             <div className="movie-information__user-score-container">
                                 <p className="movie-information__user-score-text">
-                                    User Score:
+                                    {t('movieInformation.userScore')}
                                 </p>
                                 <p className="movie-information__user-score-number">
                                     {infoMovie.vote_average.toFixed(1)}
@@ -64,7 +67,7 @@ function MovieInformation() {
                         </div>
                         <div className="movie-information__details-container">
                             <h2 className="movie-information__details-main-text">
-                                Genres:
+                                {t('movieInformation.genres')}
                             </h2>
                             {infoMovie.genres ? (
                                 <ul className="movie-information__details-list">
@@ -78,11 +81,11 @@ function MovieInformation() {
                                     ))}
                                 </ul>
                             ) : (
-                                <p>Geners missing.</p>
+                                <p>{t('movieInformation.notGenres')}</p>
                             )}
 
                             <h2 className="movie-information__details-main-text">
-                                Overview:
+                                {t('trending.overview')}
                             </h2>
                             <p className="movie-information__details-text">
                                 {infoMovie.overview}
@@ -94,13 +97,13 @@ function MovieInformation() {
                             className="movie-information__nav-link"
                             to={`/movies/${id}/cast`}
                         >
-                            Cast
+                            {t('navLink.cast')}
                         </NavLink>
                         <NavLink
                             className="movie-information__nav-link"
                             to={`/movies/${id}/reviews`}
                         >
-                            Reviews
+                            {t('navLink.reviews')}
                         </NavLink>
                     </div>
                     <Route path="/movies/:id/cast" exact component={Cast} />
@@ -113,7 +116,7 @@ function MovieInformation() {
             ) : (
                 <>
                     <h1 className="movie-information__secondary-text">
-                        There is no information available for this movie.
+                        {t('movieInformation.notInfoMovie')}
                     </h1>
                 </>
             )}

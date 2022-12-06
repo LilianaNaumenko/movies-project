@@ -5,12 +5,16 @@ import Image from '../Image/Image'
 import { ThreeDots } from 'react-loader-spinner'
 import { fetchMovieBySearch } from '../../requests/movie'
 import { LanguageContext } from '../../App'
+import { useTranslation } from 'react-i18next'
+import ListMovie from '../ListMovie'
 
 function FindMovie() {
     const [value, updateValue] = useState('')
     const [result, updateResults] = useState<FindMoviesResponse['results']>([])
     const [isLoading, updateIsLoading] = useState<boolean>(false)
     const { language } = useContext(LanguageContext)
+
+    const { t } = useTranslation()
 
     const handleChange = (e: {
         target: { value: React.SetStateAction<string> }
@@ -39,7 +43,7 @@ function FindMovie() {
         <div className="find-movie__main-contaiter">
             <form className="find-movie__form-container">
                 <label className="find-movie__label">
-                    Find Movies
+                    {t('findMovie.title')}
                     <input
                         className="find-movie__input"
                         value={value}
@@ -63,52 +67,7 @@ function FindMovie() {
                 <div>
                     {value && (
                         <div>
-                            <ul className="find-movie__list-container">
-                                {result.map(
-                                    ({
-                                        id,
-                                        title,
-                                        original_title,
-                                        poster_path,
-                                        overview,
-                                    }) => (
-                                        <li className="find-movie__list-item">
-                                            <NavLink
-                                                className="find-movie__list-item-link"
-                                                to={`/movies/${id}`}
-                                                key={id}
-                                            >
-                                                <h1 className="find-movie__list-item-text">
-                                                    {title || original_title}
-                                                </h1>
-                                                <div className="find-movie__img-or-backdrop-container">
-                                                    <Image
-                                                        width={300}
-                                                        height={450}
-                                                        src={poster_path}
-                                                    />
-
-                                                    <div className="find-movie__backdrop">
-                                                        <h2 className="find-movie__backdrop-header">
-                                                            Overview:
-                                                        </h2>
-                                                        {overview ? (
-                                                            <p className="find-movie__backdrop-text">
-                                                                {overview}
-                                                            </p>
-                                                        ) : (
-                                                            <p>
-                                                                Overview
-                                                                missing.
-                                                            </p>
-                                                        )}
-                                                    </div>
-                                                </div>
-                                            </NavLink>
-                                        </li>
-                                    )
-                                )}
-                            </ul>
+                            <ListMovie arrMovies={result} />
                         </div>
                     )}{' '}
                 </div>

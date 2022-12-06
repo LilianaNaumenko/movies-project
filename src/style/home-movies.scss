@@ -73,8 +73,12 @@
     }
 
     &__list-item-text {
+        width: 300px;
         font-size: 14px;
         text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
         &:hover {
             color: #6a617d;

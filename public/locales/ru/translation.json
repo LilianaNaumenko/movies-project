@@ -1,0 +1,36 @@
+{
+    "trending": {
+        "title": "Популярные фильми сегодня",
+        "overview": "Обзор:",
+        "notOverview": "Обзор отсутсвует."
+    },
+
+    "findMovie": {
+        "title": "Введите название фильма"
+    },
+
+    "movieInformation": {
+        "userScore": "Оценка пользователя",
+        "genres": "Жанр:",
+        "notGenres": "Информация о жанре отсутсвует.",
+        "notInfoMovie": "Информация об этом фильме отсутсвует."
+    },
+
+    "cast": {
+        "character": "Персонаж:",
+        "notInfoActor": "Информация об актерах отсутсвует."
+    },
+
+    "reviews": {
+        "author": "Автор",
+        "notReviews": "Отзывы об этом фильме отсутсвуют. Ваш может быть первым."
+    },
+
+    "navLink": {
+        "trendingtoday": "Тренды",
+        "findMovies": "Поиск",
+        "registration": "Регистрация",
+        "cast": "В ролях",
+        "reviews": "Отзывы"
+    }
+}

@@ -4,12 +4,15 @@ import { useParams } from 'react-router-dom'
 import { LanguageContext } from '../../../App'
 import { ReviewsResponse } from '../../../models'
 import { fetchAllReviewsAboutMovie } from '../../../requests/movie'
+import { useTranslation } from 'react-i18next'
 
 function Reviews() {
     const { id } = useParams<{ id: string }>()
     const [review, updateReview] = useState<ReviewsResponse['results']>([])
     const [isLoading, updateIsLoading] = useState<boolean>(true)
     const { language } = useContext(LanguageContext)
+
+    const { t } = useTranslation()
 
     const getReviewsAboutMovie = async () => {
         try {
@@ -43,7 +46,7 @@ function Reviews() {
                             <li className="reviews__list-item" key={id}>
                                 <div className="reviews__text-author-container">
                                     <p className="reviews__text-author-list-item">
-                                        Author:
+                                        {t('reviews.author')}
                                     </p>
                                     <p className="reviews__text-author-list-item">
                                         {author_details.name
@@ -61,8 +64,7 @@ function Reviews() {
             ) : (
                 <>
                     <p className="reviews__secondary-text">
-                        There are no reviews for this film. Yours may be the
-                        first.
+                        {t('reviews.notReviews')}
                     </p>
                 </>
             )}{' '}

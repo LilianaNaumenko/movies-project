@@ -5,12 +5,16 @@ import Image from '../../Image/Image'
 import { ThreeDots } from 'react-loader-spinner'
 import { fetchAllMovieActors } from '../../../requests/movie'
 import { LanguageContext } from '../../../App'
+import { useTranslation } from 'react-i18next'
+
 
 function Cast() {
     const { id } = useParams<{ id: string }>()
     const [actors, updateActors] = useState<CastResponse['cast']>([])
     const [isLoading, updateIsLoading] = useState<boolean>(true)
     const { language } = useContext(LanguageContext)
+
+    const { t } = useTranslation()
 
     const getInfoActors = async () => {
         try {
@@ -60,7 +64,7 @@ function Cast() {
 
                                     <div className="cast__character-text-container">
                                         <p className="cast__character-text">
-                                            Character:
+                                            {t('cast.character')}
                                         </p>
                                         <p> {character ? character : '-'}</p>
                                     </div>
@@ -72,7 +76,7 @@ function Cast() {
             ) : (
                 <>
                     <p className="cast__secondary-text">
-                        No information about the cast.
+                        {t('cast.notInfoActor')}
                     </p>
                 </>
             )}
